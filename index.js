@@ -3,12 +3,13 @@ import { connect } from "http2";
 import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
 import { booksRouter } from "./routes/books.js";
-import cors from "cors"
-
+import cors from "cors";
+import { usersRouter } from "./routes/users.js";
+import bcrypt from "bcrypt";
 dotenv.config();
 
 const app = express();
-app.use(cors())
+app.use(cors());
 
 const MONGO_URL = process.env.MONGO_URL;
 const PORT = process.env.PORT;
@@ -117,5 +118,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/books", booksRouter);
+//users
+app.use("/users", usersRouter);
 
 app.listen(PORT, () => console.log("Server is connected on port: ", PORT));
+

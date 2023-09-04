@@ -1,4 +1,5 @@
 import express from "express";
+import {auth} from "../middleware/auth.js"
 import {
   getAllBook,
   getBookById,
@@ -9,7 +10,7 @@ import {
 
 const router = express.Router();
 
-//get all books
+//get all books => add auth middleware
 router.get("/", async (req, res) => {
   const { language, rating } = req.query;
   console.log(req.query, language);
