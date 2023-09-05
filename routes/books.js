@@ -11,7 +11,7 @@ import {
 const router = express.Router();
 
 //get all books => add auth middleware
-router.get("/", async (req, res) => {
+router.get("/",auth, async (req, res) => {
   const { language, rating } = req.query;
   console.log(req.query, language);
   if (req.query.rating) {
@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
 });
 
 //get book by id
-router.get("/:id", async (req, res) => {
+router.get("/:id",auth, async (req, res) => {
   const { id } = req.params;
   console.log(req.params, id);
   const book = await getBookById(id);
