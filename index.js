@@ -122,4 +122,3 @@ app.use("/books", booksRouter);
 app.use("/users", usersRouter);
 
 app.listen(PORT, () => console.log("Server is connected on port: ", PORT));
-
